@@ -5,6 +5,7 @@ class Person {
 		this.velocity = createVector(random(-personsSpeed, personsSpeed), random(-personsSpeed, personsSpeed))
 		this.position = createVector(ceil(random(personsRadius, width-personsRadius)), ceil(random(personsRadius, height-personsRadius)))
 		this.isSick = random(0,1)<sickPopulationPercentage/100 ? true : false
+		if(this.isSick) this.sickness = sicknessDays * 40
 	}
 	run = ()=>{
 		this.update()
@@ -13,6 +14,11 @@ class Person {
 	}
 	// Method to update position
 	update = ()=>{
+		if(this.isSick) {
+			this.sickness-=1
+			if(this.sickness<0) this.isSick=false
+		}
+		if(stayHome && random(0,1)>0.1) return
 		// create a new vector every 120 frames to rotate the person
 		if(frameCount%ceil(random(0,120))==0){
 			this.velocity = createVector(ceil(random(-personsSpeed-1, personsSpeed)), ceil(random(-personsSpeed-1, personsSpeed)))
@@ -45,8 +51,10 @@ class Person {
 			// theres a collision
 			if(this.checkCollisionOne(person)){
 				// contaminate this person
-				if(person.isSick)
+				if(!this.isSick && person.isSick){
 					this.isSick = true
+					this.sickness = sicknessDays * 40
+				}
 			}
 		}
 	}
