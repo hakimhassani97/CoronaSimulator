@@ -10,16 +10,28 @@
         margin: 0;
         padding: 0;
     }
+    body{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    }
     canvas{
         overflow-y: hidden;
         scroll-behavior: smooth;
+        display: inline;
     }
 </style>
-<body>    
+<body>
+    <div style="position: absolute;top: 5px;width:100%;">
+        <label style="color: white;font-weight: bolder;">persons radius :</label><input id="radius" title="persons radius" placeholder="persons radius" type="number" style="margin-left: 5px;width: 8%;"/>
+        <label style="color: white;font-weight: bolder;">population :</label><input id="population" title="population" placeholder="population" type="number" style="margin-left: 5px;width: 8%;"/>
+        <label style="color: white;font-weight: bolder;">infection % :</label><input id="infection" title="infection %" placeholder="infection %" type="number" style="margin-left: 5px;width: 8%;"/>
+        <input id="start" type="button" value="start"/>
+    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.min.js"></script>
 <!-- <script src="./lib/p5.min.js"></script> -->
 <script src="index.js"></script>
-<script src="ParticleSystem.js"></script>
-<script src="Particle.js"></script>
+<script src="Population.js"></script>
+<script src="Person.js"></script>
 </html>
