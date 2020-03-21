@@ -5,7 +5,7 @@
  */
 
 let population // the population
-var maxPopulation = 1000 // maximum number of persons
+var maxPopulation = 500 // maximum number of persons
 var sickPopulationPercentage = 1 // percentage of sick persons
 var personsSpeed = 1 // person's speed
 var personsRadius = 4 // person's radius (means the activity of person)
@@ -56,7 +56,7 @@ function drawStatistics(){
     }
     if(frameCount%40==0) days++
     // stop when all contaminated
-    if(totalInfected==maxPopulation) stopAnimation=true
+    if(totalInfected==maxPopulation || totalInfected==0) stopAnimation=true
 }
 // total cases graph
 let totalCasesGraph=[]
@@ -135,6 +135,10 @@ document.getElementById('infection').addEventListener('change',(e)=>{
 document.getElementById('home').addEventListener('change',(e)=>{
     var newStay = e.target.checked
     stayHome = newStay
+})
+document.getElementById('reco').addEventListener('change',(e)=>{
+    var newReco = e.target.value
+    sicknessDays = newReco=='none' ? Number.POSITIVE_INFINITY : newReco
 })
 document.getElementById('start').addEventListener('click',(e)=>{
     days = 0

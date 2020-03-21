@@ -18,7 +18,8 @@ class Person {
 			this.sickness-=1
 			if(this.sickness<0) this.isSick=false
 		}
-		if(stayHome && random(0,1)>0.1) return
+		// if(this.isSick && stayHome) return;
+		if(!this.isSick && stayHome && random(0,1)>0.1) return
 		// create a new vector every 120 frames to rotate the person
 		if(frameCount%ceil(random(0,120))==0){
 			this.velocity = createVector(ceil(random(-personsSpeed-1, personsSpeed)), ceil(random(-personsSpeed-1, personsSpeed)))
