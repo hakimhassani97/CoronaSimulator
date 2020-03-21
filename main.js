@@ -12,7 +12,7 @@ var personsRadius = 4 // person's radius (means the activity of person)
 var totalInfected // total number of infected persons
 var stayHome = false // self quarantine
 var days = 0 // total days passed
-var sicknessDays = 1 // total days for a sick person to recover
+var sicknessDays = Number.POSITIVE_INFINITY // total days for a sick person to recover
 
 var stopAnimation = false
 
